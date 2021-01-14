@@ -52,10 +52,12 @@ class Match:
 
     @property
     def winner(self) -> str:
-        if self.matches[Winner.PLAYER1] == self.matches[Winner.PLAYER2]:
+        if self.matches[Winner.PLAYER1] > self.matches[Winner.PLAYER2]:
+            return Winner.PLAYER1
+        elif self.matches[Winner.PLAYER1] < self.matches[Winner.PLAYER2]:
+            return Winner.PLAYER2
+        else:
             return Winner.DEUCE
-        inverted_matches = [(v, k) for k, v in self.matches.items()]
-        return max(inverted_matches)[1].value
 
 
 if __name__ == "__main__":
