@@ -53,11 +53,10 @@ class Match:
     @property
     def winner(self) -> str:
         if self.matches[Winner.PLAYER1] > self.matches[Winner.PLAYER2]:
-            return Winner.PLAYER1
+            return Winner.PLAYER1.value
         elif self.matches[Winner.PLAYER1] < self.matches[Winner.PLAYER2]:
-            return Winner.PLAYER2
-        else:
-            return Winner.DEUCE
+            return Winner.PLAYER2.value
+        return Winner.DEUCE.value
 
 
 if __name__ == "__main__":
