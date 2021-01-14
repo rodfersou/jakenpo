@@ -42,7 +42,7 @@ class Match:
     rounds: int = 0
     matches: DefaultDict[Winner, int] = field(default_factory=lambda: defaultdict(int))
 
-    def round(self, choice_player1: Choice, choice_player2: Choice) -> Winner:
+    def round(self, choice_player1: Choice, choice_player2: Choice) -> str:
         winner = GAME_MAPPING[choice_player1][choice_player2]
 
         self.rounds += 1
@@ -51,7 +51,7 @@ class Match:
         return winner.value
 
     @property
-    def winner(self) -> Winner:
+    def winner(self) -> str:
         if self.matches[Winner.PLAYER1] == self.matches[Winner.PLAYER2]:
             return Winner.DEUCE
         inverted_matches = [(v, k) for k, v in self.matches.items()]
